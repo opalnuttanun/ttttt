@@ -153,3 +153,16 @@ table {
 .placeholder{
   color: rgb(0, 0, 0);
 }
+mat-slider {
+  width: 300px;
+  margin-right: 4%;
+}
+.example-margin {
+  margin: 10px;
+}
+.check-width{
+  width: 20%;
+  color: black;
+  font-size: 15px;
+  margin-right: 5%;
+}

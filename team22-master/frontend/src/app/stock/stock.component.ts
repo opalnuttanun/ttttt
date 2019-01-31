@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import {STOCKINGService} from '../service/stocking.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
+import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export interface StockElement {
   productID: String;
@@ -58,7 +59,7 @@ export class StockComponent implements OnInit {
   displayedColumnss: string[] = ['PID', 'productID', 'detail', 'data'];
   dataSource = new StockDataSource(this.STOCKService);
   myControl = new FormControl();
-  constructor(private STOCKService: STOCKINGService, private httpClient: HttpClient, private _formBuilder: FormBuilder) {
+  constructor(private STOCKService: STOCKINGService,private snackBar: MatSnackBar, private httpClient: HttpClient, private _formBuilder: FormBuilder) {
   }
   ngOnInit() {
     this.STOCKService.getType().subscribe(data => {
@@ -92,12 +93,13 @@ export class StockComponent implements OnInit {
     this.httpClient.delete('http://localhost:8080/product/delete/' + this.views.prodID )
       .subscribe(
         data => {
-          alert('delete completed');
+          this.snackBar.open('delete', 'complete', {
+          });
           console.log('Delete Request is successful', data);
-          window.location.reload();
         },
         error => {
-          alert('delete uncompleted');
+          this.snackBar.open('delete', 'uncomplete', {
+          });
           console.log('Error', error);
         }
       );
@@ -151,13 +153,15 @@ export class StockComponent implements OnInit {
      .subscribe(
        data => {
          if (data)  {
-           alert('edit completed');
+          this.snackBar.open('edit complete', 'complete', {
+          });
            console.log('Success');
            window.location.reload();
          }
        },
        error => {
-         alert('edit uncompleted');
+        this.snackBar.open('edit uncomplete', 'uncomplete', {
+        });
          console.log('Uncomplete',  error);
        }
      );
@@ -179,21 +183,20 @@ export class StockComponent implements OnInit {
       .subscribe(
         data => {
           if (data)  {
-            alert('edit completed');
+            this.snackBar.open('edit detail ', 'complete', {
+            });
             console.log('Success');
-            window.location.reload();
           }
         },
         error => {
-          alert('edit uncompleted');
+          this.snackBar.open('edit detail', 'uncomplete', {
+          });
           console.log('Uncomplete',  error);
         }
       );
   }
   addproduct() {
-    if (this.views.productID === '') {
-      alert('Please insert ID');
-    } else if (this.views.productName === '') {
+    if (this.views.productName === '') {
       alert('Please insert Product Name');
     } else if (this.views.productPrice === '') {
       alert('Please insert Product Price');
@@ -207,12 +210,13 @@ export class StockComponent implements OnInit {
         + this.views.statusSelect + '/' + this.views.typeSelect, this.views)
         .subscribe(
           data => {
-            alert('input complete');
+            this.snackBar.open('input ', 'complete', {
+            });
             console.log('INPUT Request is successful', data);
-            window.location.reload();
           },
           error => {
-            alert('input uncompleted');
+            this.snackBar.open('input ', 'uncomplete', {
+            });
             console.log('Error', error);
           }
         );
@@ -224,23 +228,22 @@ export class StockComponent implements OnInit {
     console.log(this.views.productDate);
     console.log(this.views.statusSelect);
     console.log(this.views.typeSelect);
-
-
   }
   adddetail() {
     this.httpClient.post('http://localhost:8080/description/' +  this.views.prodID + '/' + this.views.detID + '/' + this.views.data,
       this.views, ) .subscribe(
           data => {
-            alert('input complete');
+            this.snackBar.open('input detail ', 'complete', {
+            });
             console.log('INPUT Request is successful', data);
-             window.location.reload();
           },
           error => {
-            alert('input uncompleted');
+            this.snackBar.open('input detail ', 'uncomplete', {
+            });
             console.log('Error', error);
           }
         );
-    }
+  }
 }
 export class StockDataSource extends DataSource<any> {
   constructor(private stockService: STOCKINGService) {

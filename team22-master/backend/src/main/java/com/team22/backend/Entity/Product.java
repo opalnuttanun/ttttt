@@ -6,16 +6,15 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Entity.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.SequenceGenerator;
+import java.lang.annotation.Annotation;
+import javax.validation.constraints.*;
+import javax.persistence.FetchType;
 
 
 @Entity  //บอกว่าเป็น class entity class ที่เก็บขอมูล
@@ -32,8 +31,9 @@ public class Product {
     @Column(name="Products_ID",unique = true, nullable = false)
 
     private @NonNull Long prodId;
+    @NotNull 
     @Pattern(regexp = "[P]\\d")
-    private @NonNull  String productIds;
+    private  String productIds;
     
     @Size(min=3 ,max=30)
     private @NonNull String productName;

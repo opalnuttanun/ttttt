@@ -71,14 +71,14 @@
        </button>
        <button mat-mini-fab class="bottom-left">
          <mat-icon (click)="updatedetail()" aria-label="Example icon-button with a update icon">edit</mat-icon>
-       </button>
-      </form>
+       </button><br><br>
+      <button mat-flat-button color="accent" routerLink="/check">Checking</button>
+      <button mat-flat-button color="accent" routerLink="/checkhistory">Check History</button>
+     </form>
     </mat-grid-tile>
 
     <mat-grid-tile >
       <form class="example-form-right" >
-        <div class="example-container mat-elevation-z8">
-          <br/>
           <mat-form-field appearance="outline" class="example-width-right">
             <mat-select placeholder="Product  ID" [(ngModel)]="views.prodID"  [(value)] = "views.prodID"  name = "prod"  >
               <mat-option>None</mat-option>
@@ -160,12 +160,9 @@
               <th mat-header-cell *matHeaderCellDef> Data </th>
               <td mat-cell *matCellDef="let element"> {{element.dataDescription}} </td>
             </ng-container>
-
-
             <tr mat-header-row *matHeaderRowDef="displayedColumnss; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnss; "(click)="electRow(row)"></tr>
           </table>
-        </div>
       </form>
     </mat-grid-tile>
   </mat-grid-list>

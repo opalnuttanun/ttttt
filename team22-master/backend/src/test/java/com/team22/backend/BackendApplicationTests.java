@@ -72,16 +72,26 @@ public class BackendApplicationTests {
     }
     @Test
     public void testProductIdsCannotBeNull() {
+        Product p3 = new Product();
+		p3.setProductIds(null);
+		   try {
+            entityManager.persist(p3);
+            entityManager.flush();
+            fail("productIds must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+    @Test
+    public void testProductIdsCannotNull() {
         Product p = new Product();
-		p.setProductIds(null);
-		p.setProductName("Dress");
-		p.setProductQuantity(5);
-		p.setProductDate(new Date());
-		p.setProductPrice(1000);
+		p.setProductIds("P55");
+		
 		   try {
             entityManager.persist(p);
             entityManager.flush();
-            fail("productIds must not be null to be valid");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);

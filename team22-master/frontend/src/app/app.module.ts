@@ -51,7 +51,9 @@ import { MenuadminComponent } from './menuadmin/menuadmin.component';
 import { RegisterService } from './service/register.service';
 import { RegisterComponent } from './register/register.component';
 import { StockComponent} from './stock/stock.component';
+import { CheckComponent} from './check/check.component';
 import {STOCKINGService} from './service/stocking.service';
+import { CheckService } from './service/check.service';
 const appRoutes: Routes = [
 ];
 
@@ -67,8 +69,8 @@ const appRoutes: Routes = [
     MenucustomerComponent,
     MenuadminComponent,
     StockComponent,
-    RegisterComponent
-
+    RegisterComponent,
+    CheckComponent
   ],
   imports: [
     BrowserModule,
@@ -116,11 +118,12 @@ const appRoutes: Routes = [
       {path: 'selling', component: SellComponent},
       {path: 'renting', component: RentingComponent},
       {path: 'stock' , component: StockComponent},
+      {path: 'check' , component: CheckComponent},
       {path: 'register' , component: RegisterComponent},
       {path: '', component: HomeComponent}
     ])
   ],
-  providers: [PaymentService , MakeupService , SellingService , LeaseService , RegisterService , STOCKINGService],
+  providers: [PaymentService , MakeupService , SellingService , LeaseService , RegisterService , STOCKINGService,CheckService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
