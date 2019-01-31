@@ -166,3 +166,12 @@ mat-slider {
   font-size: 15px;
   margin-right: 5%;
 }
+body{
+  background-image: url("/img/OLF8ED0.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 561px;
+  top: 10;
+  bottom: 0;
+}

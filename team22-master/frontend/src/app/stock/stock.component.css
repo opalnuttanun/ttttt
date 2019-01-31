@@ -153,3 +153,12 @@ table {
 .placeholder{
   color: rgb(0, 0, 0);
 }
+body{
+  background-image: url("/img/OLF8ED0.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 561px;
+  top: 10;
+  bottom: 0;
+}
