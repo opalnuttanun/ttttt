@@ -15,7 +15,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import org.junit.Before;
-import org.junit.Test;
 import com.team22.backend.Entity.*;
 import com.team22.backend.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;

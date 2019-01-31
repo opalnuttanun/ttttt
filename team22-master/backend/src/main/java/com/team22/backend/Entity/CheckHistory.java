@@ -1,8 +1,6 @@
 package com.team22.backend.Entity;
 import javax.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
-
 
 @Entity
 @Data

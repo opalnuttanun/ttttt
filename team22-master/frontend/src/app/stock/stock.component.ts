@@ -117,7 +117,7 @@ export class StockComponent implements OnInit {
      console.log( this.views.selectProductQuantity);
      console.log( this.views.selectStatus);
      console.log(this.views.selectType);
-     console.log(this.views.selectProductIds);
+     console.log(this.views.selectProductID);
   }
   electRow(row) {
     this.views.selectPID = row.product.prodId;

@@ -44,9 +44,8 @@ public class Data {
                            StyleRepository styleRepository,
                            LeaseRepository leaseRepository,
                            PayMentRepository  payMentRepository,
-                           ExperienceRepository experienceRepository
-                           //ReviewRepository reviewRepository,
-                           //HistoryReviewRepository historyReviewRepository
+                           ExperienceRepository experienceRepository,
+                           CheckProductRepository checkProductRepository
                            ) {
                             return args -> {
 
@@ -65,7 +64,6 @@ public class Data {
                                     Detail dprodName = new Detail(dName);
                                     detailRepository.save(dprodName);
                                 });
-                    
                                 Stream.of("M.3","M.6","Polytechnical College","Technical College","Bachelor Degrees","Master Degrees").forEach(EduName -> {
                                     Education educationdb = new Education();
                                     educationdb.setEducationName(EduName);

@@ -56,7 +56,6 @@ public class ProductController {
         newProduct.setProductQuantity(productQuantity);
         newProduct.setProductPrice(productPrice);
         newProduct.setProductDate(productDate);
-  //      newProduct.setProductImg(productImg);/{productImg},@PathVariable String productImg
         newProduct.setStatus(setStatus);
         newProduct.setType(setType);
         return productRepository.save(newProduct);

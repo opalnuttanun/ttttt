@@ -11,12 +11,6 @@ export class CheckService {
 
   constructor(private http: HttpClient) { }
 
-  getDetail(): Observable<any> {
-    return this.http.get(this.API + '/detail');
-  }
-  getDescription(): Observable<any> {
-    return this.http.get(this.API + '/description');
-  }
   getProduct(): Observable<any> {
     return this.http.get(this.API + '/product');
   }
@@ -25,5 +19,8 @@ export class CheckService {
   }
   getStatus(): Observable<any> {
     return this.http.get(this.API + '/status');
+  }
+  getCheckProduct(): Observable<any> {
+    return this.http.get(this.API + '/checkproduct');
   }
 }

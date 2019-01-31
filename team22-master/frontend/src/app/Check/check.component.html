@@ -23,17 +23,19 @@
       <br/> <br/>
       CHECK :
       <mat-form-field class="check-width">
-        <input matInput name="percen"[(ngModel)]="views.percen">
+        <input matInput name="level"[(ngModel)]="views.level">
         <span matSuffix>%&nbsp;</span>
       </mat-form-field><br/>
-      <mat-slider thumbLabel [(ngModel)]="views.percen"name = "per" [(value)]="views.percen"></mat-slider><br/>
+      <mat-slider thumbLabel [(ngModel)]="views.level"name = "lev" [(value)]="views.level"></mat-slider><br/>
     รายละเอียด :
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder=""></textarea>
+      <textarea matInput [(ngModel)]="views.comment"  name="comm" [value] = "views.comment"></textarea>
     </mat-form-field><br/>
     <button mat-mini-fab class="bottom-left">
       <mat-icon (click)="save()"aria-label="Example icon-button with a save icon">save</mat-icon>
     </button>
+    <br/><br/>
+     <button mat-flat-button color="accent" routerLink="/checkhistory">Check History</button>
      </form>
     </mat-grid-tile>
 
@@ -88,7 +90,6 @@
               <th mat-header-cell *matHeaderCellDef> Status </th>
               <td mat-cell *matCellDef="let element"> {{element.status.statusProduct}} </td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns; "(click)="selectRow(row)"></tr>
           </table>

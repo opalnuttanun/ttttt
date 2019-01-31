@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.SequenceGenerator;
-import java.lang.annotation.Annotation;
 import javax.validation.constraints.*;
 import javax.persistence.FetchType;
 
@@ -41,6 +40,7 @@ public class Product {
     private @NonNull Integer productQuantity;
     private @NonNull Date productDate;
     private @NonNull Integer productPrice ;
+
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Type.class)
     @JoinColumn(name = "typeIds", insertable = true)
     private Type type;
@@ -49,5 +49,7 @@ public class Product {
     @JoinColumn(name = "stateId", insertable = true)
     private Status status;
 
-
+    @ManyToOne()
+    @JoinColumn(name = "checkId", insertable = true)
+    private CheckProduct check;
 }

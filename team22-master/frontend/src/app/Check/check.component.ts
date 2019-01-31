@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {STOCKINGService} from '../service/stocking.service';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -29,12 +29,11 @@ export class CheckComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   type: Array<any>;
-  detail: Array<any>;
-  description: Array<any>;
   status: Array<any>;
   product: Array<any>;
   views: any = {
-    percen : '',
+    level : 0,
+    comment: '',
     productID: '',
     productName: '',
     productQuantity: '',
@@ -45,10 +44,7 @@ export class CheckComponent implements OnInit {
     selectProductID: '',
     selectProductName: '',
     selectProductQuantity: '',
-    selectProductDate: '',
     selectProductPrice : '',
-    selectStatus : '',
-    selectType : '',
     selectPID: ''
   };
   displayedColumns: string[] = ['PID', 'productID', 'productName', 'productPrice', 'productQuantity', 'types', 'statuses'];  myControl = new FormControl();
@@ -67,14 +63,6 @@ export class CheckComponent implements OnInit {
       this.product = data;
       console.log(this.product);
     });
-    this.STOCKService.getDetail().subscribe(data => {
-      this.detail = data;
-      console.log(this.detail);
-    });
-    this.STOCKService.getDescription().subscribe(data => {
-      this.description = data;
-      console.log(this.description);
-    });
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -84,19 +72,31 @@ export class CheckComponent implements OnInit {
   }
  
    selectRow(row) {
-     this.views.selectPID = row.prodId;
+    this.views.selectPID = row.prodId;
     this.views.selectProductID = row.productIds;
     this.views.selectProductName = row.productName;
     this.views.selectProductPrice = row.productPrice;
     this.views.selectProductQuantity = row.productQuantity;
-    this.views.selectStatus = row.status.stateId;
-    this.views.selectType = row.type.typeIds;
      console.log( this.views.selectProductName);
      console.log(this.views.selectProductPrice);
      console.log( this.views.selectProductQuantity);
-     console.log( this.views.selectStatus);
-     console.log(this.views.selectType);
-     console.log(this.views.selectProductIds);
+     console.log(this.views.selectProductID);
+  }
+  save() {
+    this.httpClient.post('http://localhost:8080/checkproduct/' 
+    +  this.views.prodID + '/' + this.views.level + '/' + this.views.comment,
+      this.views, ) .subscribe(
+          data => {
+            this.snackBar.open('Check ', 'complete', {
+            });
+            console.log('INPUT Request is successful', data);
+          },
+          error => {
+            this.snackBar.open('Check ', 'uncomplete', {
+            });
+            console.log('Error', error);
+          }
+        );
   }
  
 }
