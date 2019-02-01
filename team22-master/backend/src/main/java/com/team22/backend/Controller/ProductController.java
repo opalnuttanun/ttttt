@@ -104,4 +104,8 @@ public class ProductController {
     public void deleteProduct(@PathVariable Long prodId) {
          productRepository.deleteById(prodId);
     }
+    @DeleteMapping("/description/delete/{descriptionIds}")
+    public void deletedescription(@PathVariable Long descriptionIds) {
+        descriptionRepository.deleteById(descriptionIds);
+    }
 }

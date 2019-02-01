@@ -54,6 +54,7 @@ export class StockComponent implements OnInit {
     prodID : '',
     detID : '',
     data: '',
+    selectDesID:'',
     selectProductID: '',
     selectProductName: '',
     selectProductQuantity: '',
@@ -66,11 +67,12 @@ export class StockComponent implements OnInit {
     selectPID: ''
   };
   displayedColumns: string[] = ['PID', 'productID', 'productName', 'productPrice', 'productQuantity', 'types', 'statuses'];
-  displayedColumnss: string[] = ['PID', 'productID','detID','detail', 'data'];
+  displayedColumnss: string[] = ['dID','PID', 'productID','detID','detail', 'data'];
   dataSource = new StockDataSource(this.STOCKService);
   myControl = new FormControl();
   constructor(private STOCKService: STOCKINGService,private snackBar: MatSnackBar, private httpClient: HttpClient, private _formBuilder: FormBuilder) {
   }
+  
   ngOnInit() {
     this.STOCKService.getType().subscribe(data => {
       this.type = data;
@@ -115,6 +117,21 @@ export class StockComponent implements OnInit {
         }
       );
   }
+  deleteDes() {
+    this.httpClient.delete('http://localhost:8080/description/delete/' + this.views.selectDesID )
+      .subscribe(
+        data => {
+          this.snackBar.open('delete', 'complete', {
+          });
+          console.log('Delete Request is successful', data);
+        },
+        error => {
+          this.snackBar.open('delete', 'uncomplete', {
+          });
+          console.log('Error', error);
+        }
+      );
+  }
    selectRow(row) {
     this.views.selectPID = row.prodId;
     this.views.selectProductID = row.productIds;
@@ -133,10 +150,12 @@ export class StockComponent implements OnInit {
     
   }
   electRow(row) {
+    this.views.selectDesID = row.descriptionIds;
     this.views.selectPID = row.product.prodId;
     this.views.selectProductID = row.product.productIds;
     this.views.selectDetail = row.detail.detailIds;
     this.views.selectData = row.dataDescription;
+    console.log(this.views.selectDesID);
     console.log(this.views.selectPID);
     console.log(this.views.selectProductID);
     console.log(this.views.selectDetail);
@@ -247,6 +266,7 @@ export class StockComponent implements OnInit {
     console.log(this.views.typeSelect);
   }
   adddetail() {
+    this.views.prodID = this.views.selectPID;
     this.httpClient.post('http://localhost:8080/description/' +  this.views.prodID + '/' + this.views.detID + '/' + this.views.data,
       this.views, ) .subscribe(
           data => {

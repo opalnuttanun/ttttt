@@ -61,10 +61,12 @@ mat-grid-tile{
   text-align: left;
   margin-right: 5%;
 }
+.butt{
+  margin-right: 5%;
+}
 .bottom-left{
   margin-right: 5%;
   margin-bottom: 0%;
-  margin-right: 5%;
 }
 .example-width3{
   width: 35%;
@@ -78,6 +80,7 @@ mat-grid-tile{
   font-size: 15px;
   margin-left: 30%;
   margin-right: 5%;
+  height: 15%;
 }
 .example-select{
   color: black;
@@ -96,8 +99,9 @@ mat-grid-tile{
   margin: 10px;
 }
 .example-container {
-  height: 460px;
+  height: 480px;
   overflow: auto;
+  width: 100%;
 }
 table {
   width: 100%;

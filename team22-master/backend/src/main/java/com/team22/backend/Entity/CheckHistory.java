@@ -21,7 +21,7 @@ public class CheckHistory {
     @JoinColumn(name = "CheckProduct_ID", insertable = true)
     private  CheckProduct check;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
     @JoinColumn(name = "Product_ID", insertable = true)
     private  Product product;
   
