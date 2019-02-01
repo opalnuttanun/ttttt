@@ -54,6 +54,8 @@ import { StockComponent} from './stock/stock.component';
 import { CheckComponent} from './check/check.component';
 import {STOCKINGService} from './service/stocking.service';
 import { CheckService } from './service/check.service';
+import { CheckhistoryComponent } from './checkhistory/checkhistory.component';
+import { CheckhistoryService } from './service/checkhistory.service';
 const appRoutes: Routes = [
 ];
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     MenuadminComponent,
     StockComponent,
     RegisterComponent,
-    CheckComponent
+    CheckComponent,
+    CheckhistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -119,11 +122,12 @@ const appRoutes: Routes = [
       {path: 'renting', component: RentingComponent},
       {path: 'stock' , component: StockComponent},
       {path: 'check' , component: CheckComponent},
+      {path: 'checkhistory' , component: CheckhistoryComponent},
       {path: 'register' , component: RegisterComponent},
       {path: '', component: HomeComponent}
     ])
   ],
-  providers: [PaymentService , MakeupService , SellingService , LeaseService , RegisterService , STOCKINGService,CheckService],
+  providers: [PaymentService , MakeupService , SellingService , LeaseService , RegisterService , STOCKINGService,CheckService,CheckhistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

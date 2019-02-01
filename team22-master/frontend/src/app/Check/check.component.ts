@@ -4,6 +4,11 @@ import {HttpClient} from '@angular/common/http';
 import {STOCKINGService} from '../service/stocking.service';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+export interface Tile {
+  cols: number;
+  rows: number;
+}
 export interface StockElement {
   productID: String;
   productName: String;
@@ -23,6 +28,12 @@ export interface StockElement {
   styleUrls: ['./check.component.css']
 })
 export class CheckComponent implements OnInit {
+  tiles: Tile[] = [
+    {cols: 2, rows: 1, },
+  ];
+  tile_right: Tile[] = [
+    {cols: 3, rows: 1, },
+  ];
   max = 100;
   min = 0;
   step = 1;
@@ -70,7 +81,6 @@ export class CheckComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
- 
    selectRow(row) {
     this.views.selectPID = row.prodId;
     this.views.selectProductID = row.productIds;
@@ -98,5 +108,4 @@ export class CheckComponent implements OnInit {
           }
         );
   }
- 
 }

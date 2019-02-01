@@ -1,7 +1,9 @@
 <app-menuadmin></app-menuadmin>
 <body><mat-card class="config-check-form">
-  <mat-grid-list cols="2" rowHeight="460px">
-    <mat-grid-tile class="left">
+  <mat-grid-list cols="5" rowHeight="460px">
+    <mat-grid-tile class="left" *ngFor="let tile of tiles"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows">
      <form class="example-form">
       <mat-form-field class="example-full-width">
         <input  type="text"[(ngModel)]="views.productID" aria-label="Number" matInput [formControl]="myControl" [(value)]="views.selectProductID" name="pid" [value] = "views.productID" >
@@ -27,19 +29,21 @@
         <span matSuffix>%&nbsp;</span>
       </mat-form-field><br/>
       <mat-slider thumbLabel [(ngModel)]="views.level"name = "lev" [(value)]="views.level"></mat-slider><br/>
-    รายละเอียด :
+    COMMENT :
     <mat-form-field class="example-full-width">
       <textarea matInput [(ngModel)]="views.comment"  name="comm" [value] = "views.comment"></textarea>
     </mat-form-field><br/>
     <button mat-mini-fab class="bottom-left">
-      <mat-icon (click)="save()"aria-label="Example icon-button with a save icon">save</mat-icon>
+      <mat-icon (click)="save()" aria-label="Example icon-button with a save icon">save</mat-icon>
     </button>
     <br/><br/>
      <button mat-flat-button color="accent" routerLink="/checkhistory">Check History</button>
      </form>
     </mat-grid-tile>
 
-    <mat-grid-tile >
+    <mat-grid-tile  *ngFor="let tile of tile_right"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows">
       <form class="example-form-right" >
           <mat-form-field appearance="outline" class="example-width-right">
             <mat-select placeholder="Product  ID" [(ngModel)]="views.prodID"  [(value)] = "views.prodID"  name = "prod"  >

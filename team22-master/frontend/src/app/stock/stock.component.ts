@@ -6,6 +6,10 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+export interface Tile {
+  cols: number;
+  rows: number;
+}
 export interface StockElement {
   productID: String;
   productName: String;
@@ -26,6 +30,12 @@ export interface StockElement {
 })
 
 export class StockComponent implements OnInit {
+  tiles: Tile[] = [
+    {cols: 2, rows: 1, },
+  ];
+  tile_right: Tile[] = [
+    {cols: 3, rows: 1, },
+  ];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   type: Array<any>;
