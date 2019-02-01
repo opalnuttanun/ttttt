@@ -84,14 +84,14 @@
     [colspan]="tile.cols"
     [rowspan]="tile.rows">
       <form class="example-form-right" >
-          <mat-form-field appearance="outline" class="example-width-right">
-            <mat-select placeholder="Product  ID" [(ngModel)]="views.prodID"  [(value)] = "views.prodID"  name = "prod"  >
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let prod of product" [value]="prod.prodId">
-                {{prod.productIds}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <mat-form-field appearance="outline" class="example-width-right">
+          <mat-select placeholder="Product  ID" [(ngModel)]="views.prodID"  [(value)] = "views.prodID"  name = "prod"  >
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let prod of product" [value]="prod.prodId">
+              {{prod.productIds}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
           <button mat-mini-fab class="bottom-left">
             <mat-icon (click)="delete()"aria-label="Example icon-button with a bin icon">delete</mat-icon>
           </button>

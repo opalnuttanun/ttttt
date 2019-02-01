@@ -152,14 +152,17 @@ export class StockComponent implements OnInit {
    if (!this.views.productPrice) {
      this.views.productPrice = this.views.selectProductPrice;
    }
+   if (!this.views.statusSelect) {
+    this.views.statusSelect = this.views.selectStatus;
+  }
    console.log(this.views.productName);
    console.log(this.views.productQuantity);
    console.log(this.views.typeSelect);
    console.log(this.views.productDate);
    this.httpClient.put('http://localhost:8080/product/updateproduct/' + this.views.prodID + '/'
-   + this.views.productID + '/' + this.views.productName + '/'
-     + this.views.productPrice + '/' +  this.views.productQuantity
-     , this.views)
+   + this.views.productID + '/' + this.views.productName + '/' + this.views.productPrice + '/' 
+   + this.views.productQuantity + '/' + this.views.selectStatus + '/' + this.views.selectType
+   , this.views)
      .subscribe(
        data => {
          if (data)  {
