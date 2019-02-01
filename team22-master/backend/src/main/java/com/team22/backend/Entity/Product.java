@@ -31,7 +31,7 @@ public class Product {
 
     private @NonNull Long prodId;
     @NotNull 
-    @Pattern(regexp = "[P]\\d")
+    @Pattern(regexp = "[P]\\d{1,5}")
     private  String productIds;
     
     @Size(min=3 ,max=30)
@@ -49,7 +49,4 @@ public class Product {
     @JoinColumn(name = "stateId", insertable = true)
     private Status status;
 
-    @ManyToOne()
-    @JoinColumn(name = "checkId", insertable = true)
-    private CheckProduct check;
 }

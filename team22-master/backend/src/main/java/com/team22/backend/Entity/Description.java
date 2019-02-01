@@ -24,7 +24,7 @@ public class Description {
     @JoinColumn(name = "Detail_ID", insertable = true)
     private  Detail detail;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
-    @JoinColumn(name = "Product_ID", insertable = true)
-    private  Product product;
+	public void setProduct(Product setProd) {
+	}
+
 }

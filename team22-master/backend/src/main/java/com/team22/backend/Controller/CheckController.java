@@ -23,13 +23,17 @@ public class CheckController {
         return checkProductRepository.findAll().stream().collect(Collectors.toList());
     }
   
-    @PostMapping("/checkproduct/{prodId}/{levelCheck}/{commemtCheck}")
-    public CheckProduct newcheck(@RequestBody CheckProduct newcheck, @PathVariable Long prodId, @PathVariable Integer levelCheck,@PathVariable String commemtCheck)
+    @PostMapping("/checkproduct/{prodId}/{checkLevel}/{checkComment}")
+    public CheckProduct newcheck(@RequestBody CheckProduct newcheck, @PathVariable Long prodId, @PathVariable Integer checkLevel,@PathVariable String checkComment)
     {
         Product setProd = productRepository.findByProdId(prodId);
-        newcheck.setCheckComment(commemtCheck);
-        newcheck.setCheckLevel(levelCheck);
+        newcheck.setCheckComment(checkComment);
+        newcheck.setCheckLevel(checkLevel);
         newcheck.setProduct(setProd);
         return checkProductRepository.save(newcheck);
+    }
+    @DeleteMapping("/checkhistory/{checkId}")
+    public void deletecheckproductHistory(@PathVariable Long checkId) {
+        checkProductRepository.deleteById(checkId);
     }
 }

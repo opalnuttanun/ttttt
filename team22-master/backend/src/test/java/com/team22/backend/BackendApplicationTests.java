@@ -66,7 +66,7 @@ public class BackendApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
     @Test
@@ -84,7 +84,7 @@ public class BackendApplicationTests {
         }
     }
     @Test
-    public void testProductIdsCannotNull() {
+    public void testProductIdsCanNull() {
         Product p = new Product();
 		p.setProductIds("P55");
 		

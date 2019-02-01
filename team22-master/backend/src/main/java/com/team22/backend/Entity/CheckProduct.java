@@ -19,4 +19,8 @@ public class CheckProduct {
     private @NonNull Long checkId;
     private @NonNull String checkComment;
     private @NonNull Integer checkLevel;
+
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
+    @JoinColumn(name = "Product_ID", insertable = true)
+    private  Product product;
 }
