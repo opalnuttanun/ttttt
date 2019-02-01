@@ -67,10 +67,6 @@ mat-grid-tile{
   margin-left: 30%;
   margin-right: 5%;
 }
-.example-margin {
-  font-size: 12px;
-  margin: 10px;
-}
 .example-container {
   height: 460px;
   overflow: auto;

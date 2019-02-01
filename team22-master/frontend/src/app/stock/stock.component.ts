@@ -66,7 +66,7 @@ export class StockComponent implements OnInit {
     selectPID: ''
   };
   displayedColumns: string[] = ['PID', 'productID', 'productName', 'productPrice', 'productQuantity', 'types', 'statuses'];
-  displayedColumnss: string[] = ['PID', 'productID', 'detail', 'data'];
+  displayedColumnss: string[] = ['PID', 'productID','detID','detail', 'data'];
   dataSource = new StockDataSource(this.STOCKService);
   myControl = new FormControl();
   constructor(private STOCKService: STOCKINGService,private snackBar: MatSnackBar, private httpClient: HttpClient, private _formBuilder: FormBuilder) {
@@ -100,6 +100,7 @@ export class StockComponent implements OnInit {
     });
   }
   delete() {
+    this.views.prodID = this.views.selectPID;
     this.httpClient.delete('http://localhost:8080/product/delete/' + this.views.prodID )
       .subscribe(
         data => {
@@ -115,25 +116,28 @@ export class StockComponent implements OnInit {
       );
   }
    selectRow(row) {
-     this.views.selectPID = row.prodId;
+    this.views.selectPID = row.prodId;
     this.views.selectProductID = row.productIds;
     this.views.selectProductName = row.productName;
     this.views.selectProductPrice = row.productPrice;
     this.views.selectProductQuantity = row.productQuantity;
     this.views.selectStatus = row.status.stateId;
     this.views.selectType = row.type.typeIds;
-     console.log( this.views.selectProductName);
-     console.log(this.views.selectProductPrice);
-     console.log( this.views.selectProductQuantity);
-     console.log( this.views.selectStatus);
-     console.log(this.views.selectType);
-     console.log(this.views.selectProductID);
+    console.log(this.views.selectPID);
+    console.log(this.views.selectProductID);
+    console.log( this.views.selectProductName);
+    console.log(this.views.selectProductPrice);
+    console.log( this.views.selectProductQuantity);
+    console.log( this.views.selectStatus);
+    console.log(this.views.selectType);
+    
   }
   electRow(row) {
     this.views.selectPID = row.product.prodId;
     this.views.selectProductID = row.product.productIds;
-    this.views.selectDetail = row.detail.detailName;
+    this.views.selectDetail = row.detail.detailIds;
     this.views.selectData = row.dataDescription;
+    console.log(this.views.selectPID);
     console.log(this.views.selectProductID);
     console.log(this.views.selectDetail);
     console.log(this.views.selectData);
