@@ -22,7 +22,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 @DataJpaTest
 public class BackendApplicationTests {
 
@@ -96,5 +96,36 @@ public class BackendApplicationTests {
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
-	}
+    }
+    @Test(expected=javax.persistence.PersistenceException.class)
+    public void testProductIdsMustBeUnique() {
+        Product p4 = new Product();
+		p4.setProductIds("P55");
+        entityManager.persist(p4);
+        entityManager.flush();
+
+        Product p5 = new Product();
+		p5.setProductIds("P55");
+        entityManager.persist(p5);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    }
+
+    @Test
+    public void testProductIdsNotDigit(){
+        Product p6 = new Product();
+		p6.setProductIds("Pdefff");
+         try {
+            entityManager.persist(p6);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
 }
