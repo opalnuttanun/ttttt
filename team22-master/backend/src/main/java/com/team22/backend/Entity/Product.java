@@ -32,6 +32,7 @@ public class Product {
     private @NonNull Long prodId;
     @NotNull 
     @Pattern(regexp = "[P]\\d{1,5}")
+    @Column(unique = true)
     private  String productIds;
     
     @Size(min=3 ,max=30)
