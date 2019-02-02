@@ -30,6 +30,12 @@
         <mat-placeholder class="placeholder">Check Product Comment</mat-placeholder>
       </mat-form-field>
       <br/>
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="views.checkhistorytDate"name="date" [(value)]="views.selectcheckhistorytDate" [value]="views.checkhistorytDate">
+        <mat-placeholder class="placeholder">Date</mat-placeholder>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field><br/>
      <br/>
      
   <br/> <br/>
@@ -39,7 +45,7 @@
      </form>
     </mat-grid-tile>
 
-    <mat-grid-tile *ngFor="let tile of tile_right"
+    <mat-grid-tile class="example-container mat-elevation-z8" *ngFor="let tile of tile_right"
     [colspan]="tile.cols"
     [rowspan]="tile.rows">
       <form class="example-form-right" >
@@ -68,7 +74,7 @@
               <td mat-cell *matCellDef="let element"> {{element.product.productIds}} </td>
             </ng-container>
 
-             <!-- ID Column -->
+             <!-- Name Column -->
              <ng-container matColumnDef="productname">
                 <th mat-header-cell *matHeaderCellDef> Product Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.product.productName}} </td>

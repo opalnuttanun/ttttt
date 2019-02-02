@@ -5,5 +5,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface CheckHistoryRepository extends JpaRepository<CheckHistory, Long>{
-    CheckHistory findByCheckHistoryId(Long checkHistoryId);
+    CheckHistory findByCheckhistoryId(Long checkhistoryId);
 }

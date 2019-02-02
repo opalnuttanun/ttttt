@@ -36,4 +36,16 @@ public class CheckController {
     public void deletecheckproductHistory(@PathVariable Long checkId) {
         checkProductRepository.deleteById(checkId);
     }
+    @PutMapping("/checkproduct/editcheck/{prodId}/{checkId}/{checkLevel}/{checkComment}")
+    public CheckProduct editcheckproduct(@RequestBody CheckProduct checkp, @PathVariable Long prodId,@PathVariable Long checkId, @PathVariable Integer checkLevel, @PathVariable String checkComment) {
+        CheckProduct setchP = checkProductRepository.findByCheckId(checkId);
+        return checkProductRepository.findById(prodId).map(checkEdit -> {
+                    checkEdit.setCheckLevel(checkLevel);
+                    checkEdit.setCheckComment(checkComment);
+                    return checkProductRepository.save(checkEdit);
+                }
+        ).orElseGet(() -> {
+            return checkProductRepository.save(checkp);
+        });
+    }
 }

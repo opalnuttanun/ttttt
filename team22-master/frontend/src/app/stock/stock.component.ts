@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
 import {STOCKINGService} from '../service/stocking.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import {MatSnackBar} from '@angular/material';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export interface Tile {
   cols: number;
   rows: number;
@@ -36,8 +34,6 @@ export class StockComponent implements OnInit {
   tile_right: Tile[] = [
     {cols: 3, rows: 1, },
   ];
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
   type: Array<any>;
   detail: Array<any>;
   description: Array<any>;
@@ -69,8 +65,7 @@ export class StockComponent implements OnInit {
   displayedColumns: string[] = ['PID', 'productID', 'productName', 'productPrice', 'productQuantity', 'types', 'statuses'];
   displayedColumnss: string[] = ['dID','PID', 'productID','detID','detail', 'data'];
   dataSource = new StockDataSource(this.STOCKService);
-  myControl = new FormControl();
-  constructor(private STOCKService: STOCKINGService,private snackBar: MatSnackBar, private httpClient: HttpClient, private _formBuilder: FormBuilder) {
+  constructor(private STOCKService: STOCKINGService,private snackBar: MatSnackBar, private httpClient: HttpClient) {
   }
   
   ngOnInit() {
@@ -93,12 +88,6 @@ export class StockComponent implements OnInit {
     this.STOCKService.getDescription().subscribe(data => {
       this.description = data;
       console.log(this.description);
-    });
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
     });
   }
   delete() {

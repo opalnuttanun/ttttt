@@ -1,6 +1,10 @@
 package com.team22.backend.Entity;
-import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import javax.persistence.*;
+import java.util.Date;
+import javax.validation.constraints.*;
 
 @Entity
 @Data
@@ -15,13 +19,10 @@ public class CheckHistory {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CheckHistory_seq")
     @Column(name="CheckHistory_ID",unique = true, nullable = false)
      
-    private @NonNull Long checkHistoryId;
-    
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = CheckProduct.class)
-    @JoinColumn(name = "CheckProduct_ID", insertable = true)
-    private  CheckProduct check;
+    private @NonNull Long checkhistoryId;
+    private @NonNull Date checkhistorytDate;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
     @JoinColumn(name = "Product_ID", insertable = true)
     private  Product product;
   

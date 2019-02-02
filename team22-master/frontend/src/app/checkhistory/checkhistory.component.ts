@@ -22,7 +22,8 @@ export class CheckhistoryComponent implements OnInit {
     selectProductName: '',
     selectCheckProductComment: '',
     selectCheckProductLevel: '',
-    selectCheckProductID: ''
+    selectCheckProductID: '',
+    checkhistorytDate:''
   };
   displayedColumns: string[] = ['CID', 'productID','productname', 'level', 'comment'];
   constructor(private CheckhistoryService: CheckhistoryService,private snackBar: MatSnackBar, private httpClient: HttpClient) {

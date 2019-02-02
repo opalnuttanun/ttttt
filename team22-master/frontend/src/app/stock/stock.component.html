@@ -7,7 +7,7 @@
     [rowspan]="tile.rows">
      <form class="example-form">
        <mat-form-field class="example-full-width">
-         <input  type="text"[(ngModel)]="views.productID" aria-label="Number" matInput [formControl]="myControl" [(value)]="views.selectProductID" name="pid" [value] = "views.productID" >
+         <input matInput type="text"[(ngModel)]="views.productID" aria-label="Number" [(value)]="views.selectProductID" name="pid" [value] = "views.productID" >
          <mat-placeholder class="placeholder">Product  ID</mat-placeholder>
        </mat-form-field>
        <br/>
@@ -84,9 +84,8 @@
     [colspan]="tile.cols"
     [rowspan]="tile.rows">
       <form class="example-form-right" >
-          
         <mat-form-field appearance="outline" class="example-width-right">
-          <mat-select placeholder="Product  ID" [(ngModel)]="views.selectPID"  [(value)] = "views.selectPID"  name = "prod"  >
+          <mat-select placeholder="Product  ID" [(ngModel)]="views.prodID"  [(value)] = "views.selectPID"  name = "prod"  >
             <mat-option>None</mat-option>
             <mat-option *ngFor="let prod of product" [value]="prod.prodId">
               {{prod.productIds}}

@@ -1,7 +1,7 @@
 .config-check-form{
     margin-left:10%;
     margin-right: 10%;
-    height: 456px;
+    height: 465px;
     background-color:whitesmoke;
     opacity: .9;
   }
@@ -12,6 +12,7 @@
     height: 460px;
     font-size: 20px;
     color: black;
+    margin-right: 5%;
   }
   .example-full-width {
     width: 50%;
